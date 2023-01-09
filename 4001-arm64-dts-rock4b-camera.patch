@@ -1,0 +1,56 @@
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+@@ -47,3 +47,53 @@
+ 		vddio-supply = <&vcc_1v8>;
+ 	};
+ };
++
++/* I2C port setting for MIPI CSI2 Camera. */
++camera: &i2c4 {
++	status = "okay";
++	clock-frequency = <400000>;
++
++	/* These are relatively safe rise/fall times; TODO: measure */
++	i2c-scl-falling-time-ns = <50>;
++	i2c-scl-rising-time-ns = <300>;
++
++	/* 24M mclk is shared between world and user cameras */
++	pinctrl-0 = <&i2c4_xfer &test_clkout1>;
++
++	ov5647: camera@36 {
++		compatible = "ovti,ov5647";
++		reg = <0x36>;
++		clocks = <&cru SCLK_TESTCLKOUT1>;	// Need to check this one is right or not...
++		pwdn-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
++
++		port {
++			camera_out: endpoint {
++				remote-endpoint = <&csi1_ep1>;
++				data-lanes = <1 2>;
++			};
++		};
++	};
++};
++
++/* Add support rkisp1 and MIPI CSI camera */
++&isp0 {
++	status = "okay";
++
++	ports {
++		port@0 {
++			csi1_ep1: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&camera_out>;
++				data-lanes = <1 2>;
++			};
++		};
++	};
++};
++
++&isp0_mmu {
++	status = "okay";
++};
++
++&mipi_dphy_rx0 {
++	status = "okay";
++};

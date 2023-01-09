@@ -5,7 +5,7 @@
 
 pkgbase=linux
 pkgver=6.1.4
-pkgrel=3
+pkgrel=4
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -53,7 +53,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'config'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook')
+        '90-linux.hook'
+        '4001-arm64-dts-rock4b-camera.patch')                                      # Rock Pi 4B support CSI2 camera
 md5sums=('eca0790baeaecee3a6ac18a5a42809aa'
          'e6fe272dc95a1c0a8f871924699fea16'
          '6f592c11f6adc1de0f06e5d18f8c2862'
@@ -90,7 +91,8 @@ md5sums=('eca0790baeaecee3a6ac18a5a42809aa'
          '55aa37794b62452df67a77deccd5952c'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77')
+         '3dc88030a8f2f5a5f97266d99b149f77'
+         '89750a232dfdaad1f42a9dc708f4b74e')
 
 prepare() {
   apply_patches() {
