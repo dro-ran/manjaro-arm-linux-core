@@ -54,7 +54,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-        '4001-arm64-dts-rock4b-camera.patch')                                      # Rock Pi 4B support CSI2 camera
+        '1999-arm64-dts-rock4b-camera.patch')                                      # Rock Pi 4B support CSI2 camera
 md5sums=('eca0790baeaecee3a6ac18a5a42809aa'
          'e6fe272dc95a1c0a8f871924699fea16'
          '6f592c11f6adc1de0f06e5d18f8c2862'
