@@ -14,10 +14,18 @@
  };
  
  &sdio0 {
-@@ -47,3 +54,46 @@
+@@ -47,3 +54,54 @@
  		vddio-supply = <&vcc_1v8>;
  	};
  };
++
++&pinctrl {
++	camera_ctrl {
++		cam_gpio1: cam_gpio1 {
++			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
 +
 +/* I2C port setting for MIPI CSI2 Camera. */
 +camera: &i2c4 {
