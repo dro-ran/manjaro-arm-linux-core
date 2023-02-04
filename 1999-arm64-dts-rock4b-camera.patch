@@ -14,15 +14,16 @@
  };
  
  &sdio0 {
-@@ -47,3 +54,54 @@
+@@ -47,3 +54,55 @@
  		vddio-supply = <&vcc_1v8>;
  	};
  };
 +
++/* Always high for always power on ov5647 */
 +&pinctrl {
 +	camera_ctrl {
 +		cam_gpio1: cam_gpio1 {
-+			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_output_high>;
 +		};
 +	};
 +};
@@ -36,7 +37,7 @@
 +		compatible = "ovti,ov5647";
 +		reg = <0x36>;
 +		clocks = <&cam_clk>;	// This clock needs to set 25MHz.
-+		pwdn-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
++		/* pwdn-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>; */
 +
 +		port {
 +			camera_out: endpoint {
