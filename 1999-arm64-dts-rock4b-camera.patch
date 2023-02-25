@@ -14,19 +14,25 @@
  };
  
  &sdio0 {
-@@ -47,3 +54,55 @@
+@@ -47,3 +54,62 @@
  		vddio-supply = <&vcc_1v8>;
  	};
  };
 +
-+/* Always high for always power on ov5647 */
++/* I think regulator-fixed possibly usable */
 +&pinctrl {
 +	camera_ctrl {
 +		cam_gpio1: cam_gpio1 {
-+			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_output_low>;
 +		};
 +	};
 +};
++
++/* Set Camera IF Vcc to 3.3v */
++&vcc_cam {
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++}
 +
 +/* I2C port setting for MIPI CSI2 Camera. */
 +camera: &i2c4 {
@@ -37,7 +43,8 @@
 +		compatible = "ovti,ov5647";
 +		reg = <0x36>;
 +		clocks = <&cam_clk>;	// This clock needs to set 25MHz.
-+		/* pwdn-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>; */
++		/* Low to pwdn active */
++		pwdn-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_LOW>;
 +
 +		port {
 +			camera_out: endpoint {
