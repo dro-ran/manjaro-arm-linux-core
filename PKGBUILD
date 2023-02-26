@@ -105,7 +105,7 @@ md5sums=('c201fad8846646a21161a1a3fb39fbf5'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '68f812c6c49258de8e1a453086e680fb')
+         '4e716f2d4b4ed4468ff584ac60168d04')
 
 prepare() {
   apply_patches() {

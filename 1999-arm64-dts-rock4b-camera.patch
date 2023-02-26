@@ -32,7 +32,7 @@
 +&vcc_cam {
 +	regulator-min-microvolt = <3300000>;
 +	regulator-max-microvolt = <3300000>;
-+}
++};
 +
 +/* I2C port setting for MIPI CSI2 Camera. */
 +camera: &i2c4 {
