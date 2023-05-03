@@ -55,7 +55,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-        '1999-arm64-dts-rock4b-camera.patch')
+        # '1999-arm64-dts-rock4b-camera.patch'
+        '1999-arm64-dts-rock4b-imx477.patch')
 md5sums=('153c2edd8c2113d5302b588a735f5128'
          'e6fe272dc95a1c0a8f871924699fea16'
          '6f592c11f6adc1de0f06e5d18f8c2862'
@@ -85,7 +86,8 @@ md5sums=('153c2edd8c2113d5302b588a735f5128'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '4e716f2d4b4ed4468ff584ac60168d04')
+        #  '4e716f2d4b4ed4468ff584ac60168d04'
+         'fd6a14b93ec42819c22eee897b8ccf17')
 
 prepare() {
   apply_patches() {
