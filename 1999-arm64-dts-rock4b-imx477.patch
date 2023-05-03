@@ -1,6 +1,6 @@
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -14,6 +14,28 @@
+@@ -14,6 +14,34 @@
  	aliases {
  		mmc2 = &sdio0;
  	};
@@ -26,10 +26,16 @@
 +		startup-delay-us = <300000>;
 +		status = "okay";
 +	};
++
++	cam_dummy_reg: cam_dummy_reg {
++		compatible = "regulator-fixed";
++		regulator-name = "cam-dummy-reg";
++		status = "okay";
++	};
  };
  
  &sdio0 {
-@@ -47,3 +69,77 @@
+@@ -47,3 +75,77 @@
  		vddio-supply = <&vcc_1v8>;
  	};
  };
